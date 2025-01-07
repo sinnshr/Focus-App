@@ -31,7 +31,7 @@ I wrote this with a limited knowledge for a university course and I am fully awa
 ## Usage
 
 - **Task Management**: Navigate to the 'Tasks' section to add or edit your tasks.
-- **Pomodoro Timer**: Use the 'Timer' feature to keep track of your work/study session.
+- **Timer**: Use the 'Timer' feature to keep track of your work/study session.
 - **Calendar**: Access the 'Calendar' to view and manage your schedule.
 - **Notes**: Go to the 'Notes' section to create and manage your notes.
 
