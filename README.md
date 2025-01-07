@@ -8,7 +8,7 @@ I wrote this with a limited knowledge for a university course and I am fully awa
 
 - **Distraction-Free Interface**: A clean and simple design to keep you focused.
 - **Task Management**: Easily create, edit, and track your to-do list.
-- **Timer**: You can also customize the timer intervals to suit your productivity style.
+- **Timer**: Keep track of your work/study session with the timer feature.
 - **Calendar Integration**: Add events to your calendar to manage deadlines and appointments.
 - **Note-Taking**: Jot down ideas and important information without leaving the app.
 
@@ -31,7 +31,7 @@ I wrote this with a limited knowledge for a university course and I am fully awa
 ## Usage
 
 - **Task Management**: Navigate to the 'Tasks' section to add or edit your tasks.
-- **Pomodoro Timer**: Use the 'Timer' feature to start a keep track of your work/study session.
+- **Pomodoro Timer**: Use the 'Timer' feature to keep track of your work/study session.
 - **Calendar**: Access the 'Calendar' to view and manage your schedule.
 - **Notes**: Go to the 'Notes' section to create and manage your notes.
 
