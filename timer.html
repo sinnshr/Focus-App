@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        :root {
+            --hunyadi-yellow: #eeb757ff;
+            --moss-green: #93a182ff;
+            --dark-slate-gray: #3b4c45ff;
+            --charcoal: #344453ff;
+            --sage: #9ea57eff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('img/bg2.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--charcoal);
+        }
+
+        nav {
+            background: var(--moss-green);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            width: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            border-radius: 0px 0px 15px 15px;
+            flex-wrap: nowrap;
+            /* Prevent wrapping */
+        }
+
+        nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: bolder;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav a:hover {
+            background-color: var(--hunyadi-yellow);
+            border-radius: 5px;
+            transform: translateY(-3px);
+        }
+
+        .container {
+            background: var(--sage);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0 0 1rem 0;
+            color: var(--dark-slate-gray);
+        }
+
+        .timer {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .controls button {
+            padding: 0.75rem 1rem;
+            background: var(--dark-slate-gray);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            margin: 0 0.5rem;
+        }
+
+        .controls button:hover {
+            background: var(--hunyadi-yellow);
+            color: var(--charcoal);
+            font-weight: bold;
+        }
+
+        .theme-toggle {
+            padding: 0.75rem 1rem;
+            background: var(--hunyadi-yellow);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-toggle:hover {
+            background: var(--charcoal);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="Main.html">Home</a>
+        <a href="timer.html">Timer</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="Notes.html">Notes</a>
+        <a href="about.html">About</a>
+        <button class="theme-toggle" type="button" title="Toggle theme" onclick="toggleTheme()">
+            Change Theme
+        </button>
+    </nav>
+
+    <div class="container">
+        <h1>Timer</h1>
+        <div class="timer" id="timer">00:00:00</div>
+        <div class="controls">
+            <button onclick="startTimer()">Start</button>
+            <button onclick="stopTimer()">Stop</button>
+            <button onclick="resetTimer()">Reset</button>
+        </div>
+    </div>
+
+    <script>
+        let timerInterval;
+        let elapsedTime = 0;
+
+        function startTimer() {
+            if (timerInterval) return;
+            timerInterval = setInterval(() => {
+                elapsedTime++;
+                document.getElementById('timer').textContent = formatTime(elapsedTime);
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerInterval);
+            timerInterval = null;
+        }
+
+        function resetTimer() {
+            stopTimer();
+            elapsedTime = 0;
+            document.getElementById('timer').textContent = formatTime(elapsedTime);
+        }
+
+        function formatTime(seconds) {
+            const hrs = Math.floor(seconds / 3600);
+            const mins = Math.floor((seconds % 3600) / 60);
+            const secs = seconds % 60;
+            return `${hrs.toString().padStart(2, '0')}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.classList.toggle('dark-theme');
+            body.style.backgroundColor = isDark ? '#2c2c2c' : 'var(--dark-slate-gray)';
+            body.style.color = isDark ? '#f4f4f9' : 'var(--charcoal)';
+
+            const container = document.querySelector('.container');
+            container.style.backgroundColor = isDark ? 'var(--dark-slate-gray)' : 'var(--sage)';
+
+            const h1 = document.querySelector('h1');
+            h1.style.color = isDark ? '#f4f4f9' : 'var(--charcoal)';
+
+            const btn = document.querySelectorAll('.controls button');
+            btn.forEach(button => {
+                button.style.backgroundColor = isDark ? 'var(--sage)' : 'var(--dark-slate-gray)';
+            });
+
+            btn.forEach(button => {
+                button.addEventListener('mouseover', () => {
+                    button.style.backgroundColor = isDark ? 'var(--hunyadi-yellow)' : 'var(--hunyadi-yellow)';
+                    button.style.color = isDark ? 'var(--charcoal)' : 'var(--charcoal)';
+                    button.style.fontWeight = 'bold';
+                });
+                button.addEventListener('mouseout', () => {
+                    button.style.backgroundColor = isDark ? 'var(--sage)' : 'var(--dark-slate-gray)';
+                    button.style.color = 'white';
+                    button.style.fontWeight = 'normal';
+                });
+            });
+
+            const nav = document.querySelector('nav');
+            nav.style.backgroundColor = isDark ? 'var(--dark-slate-gray)' : 'var(--moss-green)';
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.style.color = isDark ? 'var(--sage)' : 'var(--charcoal)';
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        :root {
+            --hunyadi-yellow: #eeb757ff;
+            --moss-green: #93a182ff;
+            --dark-slate-gray: #3b4c45ff;
+            --charcoal: #344453ff;
+            --sage: #9ea57eff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('img/bg2.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--charcoal);
+        }
+
+        nav {
+            background: var(--moss-green);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            width: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            border-radius: 0px 0px 15px 15px;
+            flex-wrap: nowrap;
+            /* Prevent wrapping */
+        }
+
+        nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: bolder;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        nav a:hover {
+            background-color: var(--hunyadi-yellow);
+            border-radius: 5px;
+            transform: translateY(-3px);
+        }
+
+        nav a,
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: var(--sage);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-top: 80px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--dark-slate-gray);
+        }
+
+        .task-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .task-input input {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--moss-green);
+            border-radius: 5px;
+        }
+
+        .task-input input:focus {
+            outline-style: none;
+        }
+
+        .task-input button {
+            padding: 0.75rem 1rem;
+            background: var(--dark-slate-gray);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .task-input button:hover {
+            background: var(--hunyadi-yellow);
+            color: var(--charcoal);
+        }
+
+        .task-list ul {
+            list-style: none;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .task-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem;
+            border: 1px solid var(--moss-green);
+            border-radius: 5px;
+            margin-bottom: 0.5rem;
+            background: #f9f9f9;
+        }
+
+        .task-list li.completed span {
+            text-decoration: line-through;
+            color: #aaa;
+        }
+
+        #dltbtn {
+            padding: 0.35rem 0.55rem;
+            background: var(--hunyadi-yellow);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        #dltbtn:hover {
+            background: var(--dark-slate-gray);
+            transition: background-color 0.2s ease-in-out;
+        }
+
+        .theme-toggle {
+            padding: 0.75rem 1rem;
+            background: var(--hunyadi-yellow);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+        }
+
+        .theme-toggle:hover {
+            background: var(--charcoal);
+        }
+
+        .task-list input[type="checkbox"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--moss-green);
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            margin-right: 10px;
+        }
+
+        .task-list input[type="checkbox"]:checked {
+            background-color: var(--hunyadi-yellow);
+            border-color: var(--hunyadi-yellow);
+        }
+
+        .task-list input[type="checkbox"]:checked::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background-color: var(--charcoal);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="Main.html">Home</a>
+        <a href="timer.html">Timer</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="Notes.html">Notes</a>
+        <a href="about.html">About</a>
+        <button class="theme-toggle" type="button" title="Toggle theme" onclick="toggleTheme()">
+            Change Theme
+        </button>
+    </nav>
+
+    <div class="container">
+        <header>
+            <h1>My To-Do List</h1>
+        </header>
+
+        <main>
+            <section class="task-input">
+                <input type="text" id="newTask" placeholder="Add a new task..."
+                    style="font-family: 'Poppins', sans-serif;">
+                <button onclick="addTask()">Add Task</button>
+            </section>
+
+            <section class="task-list">
+                <h2>Tasks:</h2>
+                <ul id="taskContainer">
+
+                </ul>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function addTask() {
+            const taskInput = document.getElementById('newTask');
+            const taskContainer = document.getElementById('taskContainer');
+
+            if (taskInput.value.trim() === '') return;
+
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <input type="checkbox" id="chkbx" onchange="toggleTask(this)">
+                <span>${taskInput.value}</span>
+            <button onclick="deleteTask(this)" id="dltbtn">Delete</button>
+        `;
+            taskContainer.appendChild(li);
+
+            taskInput.value = '';
+        }
+
+        function deleteTask(button) {
+            button.parentElement.remove();
+        }
+
+        function toggleTask(checkbox) {
+            const span = checkbox.nextElementSibling;
+            span.parentElement.classList.toggle('completed', checkbox.checked);
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.classList.toggle('dark-theme');
+            body.style.backgroundColor = isDark ? '#2c2c2c' : 'var(--dark-slate-gray)';
+            body.style.color = isDark ? '#f4f4f9' : 'var(--charcoal)';
+
+            const container = document.querySelector('.container');
+            container.style.backgroundColor = isDark ? 'var(--dark-slate-gray)' : 'var(--sage)';
+
+            const h1 = document.querySelector('h1');
+            h1.style.color = isDark ? '#f4f4f9' : 'var(--charcoal)';
+
+            const btn = document.querySelector('.task-input button');
+            btn.style.backgroundColor = isDark ? 'var(--sage)' : 'var(--dark-slate-gray)';
+
+            const nav = document.querySelector('nav');
+            nav.style.backgroundColor = isDark ? 'var(--dark-slate-gray)' : 'var(--moss-green)';
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.style.color = isDark ? 'var(--sage)' : 'var(--charcoal)';
+            });
+        }
+    </script>
+</body>
+
+</html>

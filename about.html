@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+        :root {
+            --hunyadi-yellow: #eeb757ff;
+            --moss-green: #93a182ff;
+            --dark-slate-gray: #3b4c45ff;
+            --charcoal: #344453ff;
+            --sage: #9ea57eff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('img/bg2.gif') no-repeat center center fixed;
+            background-size: cover;
+            color: var(--charcoal);
+        }
+
+        nav {
+            background: var(--moss-green);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            width: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            border-radius: 0px 0px 15px 15px;
+            flex-wrap: nowrap;
+            /* Prevent wrapping */
+        }
+
+        nav a {
+            color: var(--charcoal);
+            text-decoration: none;
+            font-weight: bolder;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s, transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        nav a:hover {
+            background-color: var(--hunyadi-yellow);
+            border-radius: 5px;
+            transform: translateY(-3px);
+        }
+
+        nav a,
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background: var(--sage);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 600px;
+            margin-top: 80px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        h1 {
+            margin: 0 0 1rem 0;
+            color: var(--dark-slate-gray);
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--charcoal);
+        }
+
+        .theme-toggle {
+            padding: 0.75rem 1rem;
+            background: var(--hunyadi-yellow);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            font-weight: bold;
+        }
+
+        .theme-toggle:hover {
+            background: var(--charcoal);
+        }
+
+        .creators {
+            margin-top: 0px;
+            padding: 0px;
+            font-weight: lighter;
+        }
+
+        .container a {
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="Main.html">Home</a>
+        <a href="timer.html">Timer</a>
+        <a href="calendar.html">Calendar</a>
+        <a href="Notes.html">Notes</a>
+        <a href="about.html">About</a>
+        <button class="theme-toggle" type="button" title="Toggle theme" onclick="toggleTheme()">
+            Change Theme
+        </button>
+    </nav>
+
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Welcome to my To-Do List App! my mission is to help you stay organized and productive. Whether you need to
+            manage your daily tasks, keep track of important events, or jot down quick notes, my app has got you
+            covered.</p>
+        <div class="creators">
+            <p style="margin-bottom: 0; font-size: 0.85rem;">Created by:</p>
+            <p style="margin-top: 0; font-size: 0.85rem;">sinnshr</p>
+        </div>
+        <div class="contacts">
+            <a href="https://github.com/sinnshr" target="_blank" title="GitHub">
+                <img src="img/github.png" alt="GitHub" width="30" height="30">
+            </a>
+            <a href="#" target="_blank" title="LinkedIn">
+                <img src="img/linkedin.png" alt="LinkedIn" width="30" height="30">
+            </a>
+            <a href="#" target="_blank" title="Telegram">
+                <img src="img/telegram.png" alt="Telegram" width="30" height="30">
+            </a>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            const isDark = body.classList.toggle('dark-theme');
+            body.style.backgroundColor = isDark ? '#2c2c2c' : 'var(--dark-slate-gray)';
+            body.style.color = isDark ? '#f4f4f9' : 'var(--charcoal)';
+
+            const container = document.querySelector('.container');
+            container.style.backgroundColor = isDark ? 'var(--dark-slate-gray)' : 'var(--sage)';
+
+            const h1 = document.querySelector('h1');
+            h1.style.color = isDark ? '#f4f4f9' : 'var(--charcoal)';
+
+            const p = document.querySelectorAll('p');
+            p.forEach(paragraph => {
+                paragraph.style.color = isDark ? '#f4f4f9' : 'var(--charcoal)';
+            });
+
+            const nav = document.querySelector('nav');
+            nav.style.backgroundColor = isDark ? 'var(--dark-slate-gray)' : 'var(--moss-green)';
+
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                link.style.color = isDark ? 'var(--sage)' : 'var(--charcoal)';
+            });
+        }
+    </script>
+</body>
+
+</html>
