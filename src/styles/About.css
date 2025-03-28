@@ -1,0 +1,32 @@
+.container {
+    background: var(--sage);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 80px;
+    text-align: center;
+    font-weight: bold;
+}
+
+h1 {
+    margin: 0 0 1rem 0;
+    color: var(--dark-slate-gray);
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--charcoal);
+}
+
+.creators {
+    margin-top: 0px;
+    padding: 0px;
+    font-weight: lighter;
+}
+
+.container a {
+    text-decoration: none;
+}

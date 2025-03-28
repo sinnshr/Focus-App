@@ -1,0 +1,40 @@
+.container {
+    background: var(--sage);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    margin-top: 80px;
+    text-align: center;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    margin: 0 0 1rem 0;
+    color: var(--dark-slate-gray);
+}
+
+.timer {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+.controls button {
+    padding: 0.75rem 1rem;
+    background: var(--dark-slate-gray);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.controls button:hover {
+    background: var(--hunyadi-yellow);
+    color: var(--charcoal);
+}
