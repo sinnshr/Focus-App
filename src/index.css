@@ -1,1 +1,69 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@font-face {
+    font-family: PixelifySans-Regular;
+    src: url(./assets/fonts/PixelifySans-Regular.ttf);
+}
+
+@font-face {
+    font-family: PixelifySans-SemiBold;
+    src: url(./assets/fonts/PixelifySans-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: PixelifySans-Light;
+    src: url(./assets/fonts/PixelifySans-Light.ttf);
+}
+
+@font-face {
+    font-family: PixelifySans-Bold;
+    src: url(./assets/fonts/PixelifySans-Bold.ttf);
+}
+
+@font-face {
+    font-family: PixelifySans-Medium;
+    src: url(./assets/fonts/PixelifySans-Medium.ttf);
+}
+
+
+/* Color Variables */
+@theme {
+    --color-bg: #FDFCF9;
+    /* warm, light beige background */
+    --color-surface: #FFFFFF;
+    /* panels/cards */
+    --color-text: #2F3E2F;
+    /* dark earthy green text */
+    --color-text-muted: #6B7B6B;
+    /* softer green-gray for secondary text */
+
+    --color-primary: #4C956C;
+    /* calm earthy green for main actions */
+    --color-primary-hover: #3D7A58;
+
+    --color-accent: #DDB771;
+    /* warm sandy accent */
+    --color-accent-hover: #C89D55;
+
+    --color-error: #B94E48;
+    /* muted clay red for errors */
+    --color-error-hover: #9A3C37;
+
+    --color-border: #E5E2DA;
+    /* light earthy border */
+}
+
+html {
+    font-family: PixelifySans-Regular;
+    background-color: var(--color-bg);
+    direction: ltr;
+}
+
+button {
+    font-family: PixelifySans-Bold;
+    cursor: pointer;
+}
+
+body{
+    background-color: #acb998;
+}
